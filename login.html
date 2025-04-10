@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Hub - Login</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    
+    <style>
+        body {
+            background: url('3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: brightness(0.6);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+    <header class="bg-gradient-to-r from-purple-700 to-purple-900 text-white p-6 text-center text-2xl font-bold shadow-lg">
+        LOGIN
+    </header>
+    
+    <nav class="bg-white shadow-md py-4">
+        <ul class="flex justify-center space-x-6 text-purple-700 font-semibold">
+            <li><a href="index.html" class="hover:text-purple-500">Home</a></li>
+            <li><a href="1events.html" class="hover:text-purple-500">Events Calendar</a></li>
+            <li><a href="2study-group.html" class="hover:text-purple-500">Study Group Finder</a></li>
+            <li><a href="3course-reviews.html" class="hover:text-purple-500">Course Reviews</a></li>
+            <li><a href="4course-notes.html" class="hover:text-purple-500">Course Notes</a></li>
+            <li><a href="5campus-news.html" class="hover:text-purple-500">Campus News</a></li>
+            <li><a href="6club-activities.html" class="hover:text-purple-500">Club Activities</a></li>
+            <li><a href="7student-marketplace.html" class="hover:text-purple-500">Student Marketplace</a></li>
+        </ul>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6">
+        <section id="login-form" class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-purple-700">Login</h2>
+            <form class="space-y-4 mt-4">
+                <label class="block">Email:
+                    <input type="email" id="login-email" class="border p-2 rounded w-full" placeholder="Enter your email" required>
+                </label>
+                <label class="block">Password:
+                    <input type="password" id="login-password" class="border p-2 rounded w-full" placeholder="Enter your password" required>
+                </label>
+                <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500 w-full">Login</button>
+                <p class="text-center text-purple-700 mt-4">Don't have an account? <a href="signup.html" class="hover:underline">Signup here</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white text-center p-4 mt-8 shadow-lg">
+        &copy; 2025 Campus Hub - UOB University
+    </footer>
+</body>
+</html>

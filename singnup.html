@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Hub - Signup</title>
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    
+    <style>
+        body {
+            background: url('3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: brightness(0.6);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <header class="bg-gradient-to-r from-purple-700 to-purple-900 text-white p-6 text-center text-2xl font-bold shadow-lg">
+        SIGNUP
+    </header>
+    
+    <nav class="bg-white shadow-md py-4">
+        <ul class="flex justify-center space-x-6 text-purple-700 font-semibold">
+            <li><a href="index.html" class="hover:text-purple-500" aria-current="page">Home</a></li>
+            <li><a href="1events.html" class="hover:text-purple-500 transition">Events Calendar</a></li>
+            <li><a href="2study-group.html" class="hover:text-purple-500 transition">Study Groups</a></li>
+            <li><a href="3course-reviews.html" class="hover:text-purple-500 transition">Course Reviews</a></li>
+            <li><a href="4course-notes.html" class="hover:text-purple-500 transition">Course Notes</a></li>
+            <li><a href="5campus-news.html" class="hover:text-purple-500 transition">Campus News</a></li>
+            <li><a href="6club-activities.html" class="hover:text-purple-500 transition">Clubs</a></li>
+            <li><a href="7student-marketplace.html" class="hover:text-purple-500 transition">Marketplace</a></li>
+        </ul>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6">
+        <section id="signup" class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-purple-700">Signup</h2>
+            <form class="space-y-4">
+                <label class="block">Email:
+                    <input type="email" id="signup-email" class="border p-2 rounded w-full" placeholder="Enter your email" required>
+                </label>
+                <label class="block">Password:
+                    <input type="password" id="signup-password" class="border p-2 rounded w-full" placeholder="Create a password" required>
+                </label>
+                <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500">Signup</button>
+            </form>
+            <p class="mt-4 text-center">Already have an account? <a href="login.html" class="text-purple-700 hover:underline">Login here</a></p>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white text-center p-4 mt-8 shadow-lg">
+        &copy; 2025 Campus Hub - UOB University
+    </footer>
+</body>
+</html>
