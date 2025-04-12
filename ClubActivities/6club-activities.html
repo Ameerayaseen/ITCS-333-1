@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Activities</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        body {
+            background: url('3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: brightness(0.6);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+    <header class="bg-gradient-to-r from-purple-700 to-purple-900 text-white p-6 text-center text-2xl font-bold shadow-lg">
+        CLUB ACTIVITIES
+    </header>
+     <!-- Nevegation Area-->
+    <nav class="bg-white shadow-md py-4">
+        <ul class="flex justify-center space-x-6 text-purple-700 font-semibold">
+            <li><a href="index.html" class="hover:text-purple-500">Home</a></li>
+            <li><a href="1events.html" class="hover:text-purple-500">Events Calendar</a></li>
+            <li><a href="2study-group.html" class="hover:text-purple-500">Study Group Finder</a></li>
+            <li><a href="3course-reviews.html" class="hover:text-purple-500">Course Reviews</a></li>
+            <li><a href="4course-notes.html" class="hover:text-purple-500">Course Notes</a></li>
+            <li><a href="5campus-news.html" class="hover:text-purple-500">Campus News</a></li>
+            <li><a href="6club-activities.html" class="hover:text-purple-500" aria-current="page">Club Activities</a></li>
+            <li><a href="7student-marketplace.html" class="hover:text-purple-500">Student Marketplace</a></li>
+        </ul>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6">
+        <section id="activities" class="bg-white p-6 rounded-lg shadow-md">
+            <!--Searching about activities , Choose the date ,and Sorting -->
+            <div>
+                <input type="text" placeholder="Search club activities..." class="border p-2 rounded w-2/6" aria-label="Search activities">
+                <button class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500">Search</button>
+            <label for="Date" class="text-gray-700"></label><b> Date:</b></label>
+            <input type="date" class="p-2 border rounded focus:ring-2 focus:ring-purple-500">
+            <label for="sort" class="text-gray-700"><b>Sort by:</b></label>
+                <select id="sort" class="border p-1 rounded">
+                    <option value="oldest">Oldest to Newest</option>
+                    <option value="newest">Newest to Oldest</option>
+                </select>
+            </div>
+            <!--Information about available clubes with decriptions and details about each of them -->
+            <br>
+            <h2 class="text-xl font-bold text-purple-700">Available Clubs</h2>
+            <div class="mt-6">
+                <article class="border p-4 rounded-lg shadow-md mb-6">
+
+                    <h3 class="text-lg font-semibold">Math Club</h3>
+                    <p><strong>Activity:</strong> Math Puzzles and Problem-Solving Sessions</p>
+                    <p><strong>Description:</strong> Organizing sessions where students prepare solutions to various difficult Math activities and puzzles that depend on brainstorming.</p>
+                    <details><summary class="text-purple-700 hover:underline"><b>view more details</b></summary>
+                        <p><b>This type of activity depends on stimulating the student's mind with constructive thinking based on solving problems.</b>
+                            <br> Date:22/10/2025
+                            <br> Time: 9-11:30 AM
+                            <br> Place: To be announcement
+                            <br><b>Contact Math club manager:</b><a href= "mailto:DrMohammed@gmail.com" class="hover:text-purple-500"> Dr.Mohammed Ali</a>
+                </article>
+
+                <article class="border p-4 rounded-lg shadow-md mb-6">
+                    <h3 class="text-lg font-semibold">Computer Science Club</h3>
+                    <p><strong>Activity:</strong> Hackathons</p>
+                    <p><strong>Description:</strong> Organizing programming events where students compete to solve various programming problems in a specific timeframe.</p>
+                    <details><summary class="text-purple-700 hover:underline"><b>view more details</b></summary>
+                        <p><b>This type of activity encourages creativity and effective collaboration within working groups, in addition to providing a practical, realistic experience.</b>
+                            <br> Date:25/10/2025
+                            <br> Time: 8:00-10:30 AM
+                            <br> Place: To be announcement
+                            <br> <b>Contact CS club manager:</b><a href="mailto:DrFarah@gmail.com" class="hover:text-purple-500"> Dr.Farah Jaafar</a>
+                      </details>
+                </article>
+
+                <article class="border p-4 rounded-lg shadow-md mb-6">
+                    <h3 class="text-lg font-semibold">Physics Club</h3>
+                    <p><strong>Activity:</strong> Physics Lectures and Seminars</p>
+                    <p><strong>Description:</strong> Hosting speakers to give various lectures related to physics, such as astrophysics and others.</p>
+                    <details><summary class="text-purple-700 hover:underline"><b>view more details</b></summary>
+                        <p><b>This type of activity highlights various topics outside the academic scope.</b>
+                            <br> Date:30/10/2025
+                            <br> Time: 11:00-12:30 PM
+                            <br> Place: To be announcement
+                            <br><b> Contect physics club manager:</b><a href="mailto:DrHasanFahad@gmail.com" class="hover:text-purple-500"> Dr.Hasan Fahad</a>
+                        </p>
+                      </details>
+                </article>
+
+                <article class="border p-4 rounded-lg shadow-md mb-6">
+                    <h3 class="text-lg font-semibold">Biology Club</h3>
+                    <p><strong>Activity:</strong> DNA Extraction Workshops</p>
+                    <p><strong>Description:</strong> Hosting practical scientific workshops where students extract DNA from simple materials.</p>
+                    <details><summary class="text-purple-700 hover:underline"><b>view more details</b></summary>
+                    <p><b>This type of activity uses practical application, enabling people to learn the basic concepts of biology.</b>
+                        <br> Date:1/11/2025
+                        <br> Time: 8:30-10:30 PM
+                        <br> Place: To be announcement
+                        <br><b>Contant Biology club manager:</b><a href="mailto:DrZainab@gmail.com" class="hover:text-purple-500"> Dr.Zainab Hussain</a>
+                    </p>
+                  </details>
+                </article>
+
+                <article class="border p-4 rounded-lg shadow-md mb-6">
+                    <h3 class="text-lg font-semibold">History Club</h3>
+                    <p><strong>Activity:</strong> History Debates</p>
+                    <p><strong>Description:</strong> Holding debates on controversial historical figures and events in different periods.</p>
+                    <details><summary class="text-purple-700 hover:underline"><b>view more details</b></summary>
+                    <p><b>This activity adopts the foundations of historical analysis and critical thinking.</b>
+                        <br> Date:11/11/2025
+                        <br> Time: 1:30-3:30 PM
+                        <br> Place: To be announcement
+                        <br><b>Contant History club manager:</b><a href="mailto:DrEbrahimAhmed@gmail.com" class="hover:text-purple-500"> Dr.Ebahim Ahmed</a>
+                    </p>
+                  </details>
+                </article>
+
+                <article class="border p-4 rounded-lg shadow-md mb-6">
+                    <h3 class="text-lg font-semibold">Chemistry Club</h3>
+                    <p><strong>Activity:</strong> Chemistry Demonstrations and Experiments</p>
+                    <p><strong>Description:</strong> Organizing practical activities and events such as chemical reactions and synthesizing chemical compounds.</p>
+                    <details><summary class="text-purple-700 hover:underline"><b>view more details</b></summary>
+                        <p><b>This type of practical club enables people to learn about chemistry and how to apply it in their practical life.</b>
+                            <br> Date:18/11/2025
+                            <br> Time: 2:00-4:30 PM
+                            <br> Place: To be announcement
+                            <br><b>Contant Chemeistry club manager:</b><a href="mailto:DrReemhadi@gmail.com" class="hover:text-purple-500"> Dr.Reem Hadi</a>
+                        </p>
+                    </details>
+                
+                </article>
+            </div>
+        </section>
+
+        <!--Fill out the form to register in one of the available clubs-->
+        <section id="form" class="bg-white p-6 mt-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-purple-700">Register for Club Activities</h2>
+            <br>
+            <form action="/submit" method="post" class="space-y-4">
+                <label for="name" class="block">Email:</label>
+                <input type="text" id="name" name="name" class="border p-2 rounded w-full" required>
+
+                <label for="ID" class="block">Password:</label>
+                <input type="password" id="ID" name="ID" class="border p-2 rounded w-full" required>
+
+                <label for="club-activities" class="block">Join a Club Activity:</label>
+                <select id="club-activities" name="club-activities" class="border p-2 rounded w-full">
+                    <option value="Math">Math</option>
+                    <option value="CS">Computer Science</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Biology">Biology</option>
+                    <option value="History">History</option>
+                    <option value="Chemistry">Chemistry</option>
+                </select>
+
+                <div class="flex justify-between">
+                    <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500">Submit</button>
+                    <button type="reset" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+                </div></form>
+            </section>
+            </form>
+           
+            <!--Add suggestions with the ability to edit or delete-->
+                <div class="mt-6">
+                    <section id="activities" class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-purple-700">Recommendations:</h3>
+                    <textarea class="w-full p-2 border rounded focus:ring-2 focus:ring-purple-500" placeholder="Add your Recommendations here..."></textarea>
+                    <br><br>
+                        <button type="Edit" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-500">Edit</button>
+                        <button type="reset" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-500">Delete</button>
+                        <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded-lg mt-2 hover:bg-purple-700">Submit</button>
+                    </div>
+                    </section>
+            
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white text-center p-4 mt-8 shadow-lg">
+        &copy; 2025 Campus Hub - UOB University
+    </footer>
+</body>
+</html>
