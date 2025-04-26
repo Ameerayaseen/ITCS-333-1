@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(footer);
 
     //News Logic
-    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+    const apiUrl = 'https://jsonplaceholder.typicode.com/';
     let allNews = [];
     let currentPage = 1;
     const itemsPerPage = 5;
