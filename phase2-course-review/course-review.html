@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Course Reviews</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
+    <style>
+        body {
+            background: url('3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: brightness(0.6);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+    <header class="bg-gradient-to-r from-purple-700 to-purple-900 text-white p-6 text-center text-2xl font-bold shadow-lg">
+        COURSE REVIEWS
+    </header>
+
+    <nav class="bg-white shadow-md py-4">
+        <ul class="flex justify-center space-x-6 text-purple-700 font-semibold">
+            <li><a href="index.html" class="hover:text-purple-500">Home</a></li>
+            <li><a href="1events.html" class="hover:text-purple-500">Events Calendar</a></li>
+            <li><a href="2study-group.html" class="hover:text-purple-500">Study Group Finder</a></li>
+            <li><a href="3course-reviews.html" class="hover:text-purple-500" aria-current="page">Course Reviews</a></li>
+            <li><a href="4course-notes.html" class="hover:text-purple-500">Course Notes</a></li>
+            <li><a href="5campus-news.html" class="hover:text-purple-500">Campus News</a></li>
+            <li><a href="6club-activities.html" class="hover:text-purple-500">Club Activities</a></li>
+            <li><a href="7student-marketplace.html" class="hover:text-purple-500">Student Marketplace</a></li>
+        </ul>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6">
+        <section id="reviews" class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-purple-700">Course Reviews</h2>
+            <div class="flex justify-between items-center mt-4">
+                <input type="text" placeholder="Search course reviews..." class="border p-2 rounded w-2/3" aria-label="Search course reviews by name">
+                <button id="search-button" class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500">Search</button>
+            </div>
+            <div class="review-list mt-6">
+                <!-- Dynamic reviews will load here -->
+            </div>
+            <a href="#add-review" class="block text-center bg-purple-700 text-white py-2 mt-4 rounded hover:bg-purple-500">Add New Review</a>
+        </section>
+
+        <section id="form" class="bg-white p-6 mt-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-purple-700">Create New Review</h2>
+            <form class="space-y-4">
+                <label class="block">Course Title:
+                    <input type="text" id="course-title" class="border p-2 rounded w-full" required>
+                </label>
+                <label class="block">Review:
+                    <textarea id="course-review" class="border p-2 rounded w-full" required></textarea>
+                </label>
+                <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500">Submit</button>
+                <a href="#reviews" class="block text-center text-purple-700 mt-4 hover:underline">Back to Reviews</a>
+            </form>
+        </section>
+
+        <section id="details" class="bg-white p-6 mt-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-purple-700">Review Details</h2>
+            <p><strong>Course Title:</strong> Brief Course Title</p>
+            <p><strong>Review:</strong> Review text here.</p>
+            <div class="mt-4 flex space-x-4">
+                <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-400">Edit</button>
+                <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500">Delete</button>
+            </div>
+            <a href="#reviews" class="block text-center text-purple-700 mt-4 hover:underline">Back to Reviews</a>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white text-center p-4 mt-8 shadow-lg">
+        &copy; 2025 Campus Hub - UOB University
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
