@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let studyGroups = [];
   let filteredGroups = [];
 
-  // Fetch data from mock API
+ 
   async function fetchStudyGroups() {
       groupList.innerHTML = "";
       groupList.parentElement.prepend(loadingIndicator);
 
       try {
-          const res = await fetch("https://mocki.io/v1/bf90e7d6-b8a6-41fc-8a52-930383a1a9f3"); // استبدل بالرابط المناسب
+    
           if (!res.ok) throw new Error("Failed to fetch study groups.");
           studyGroups = await res.json();
           filteredGroups = [...studyGroups];
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Filter logic
+ 
   function applyFilters() {
       const search = searchInput.value.toLowerCase();
       const date = dateInput.value;
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderGroups(filteredGroups);
   }
 
-  // Form validation
+  
   form.addEventListener("submit", (e) => {
       e.preventDefault();
       const inputs = form.querySelectorAll("input, textarea");
