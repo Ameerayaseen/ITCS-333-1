@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        body {
+            background: url('3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: brightness(0.6);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+    <header class="bg-gradient-to-r from-purple-700 to-purple-900 text-white p-6 text-center text-2xl font-bold shadow-lg">
+        COURSE NOTES
+    </header>
+    
+    <nav class="bg-white shadow-md py-4">
+        <ul class="flex justify-center space-x-6 text-purple-700 font-semibold">
+            <li><a href="index.html" class="hover:text-purple-500">Home</a></li>
+            <li><a href="1events.html" class="hover:text-purple-500">Events Calendar</a></li>
+            <li><a href="2study-group.html" class="hover:text-purple-500">Study Group Finder</a></li>
+            <li><a href="3course-reviews.html" class="hover:text-purple-500">Course Reviews</a></li>
+            <li><a href="4course-notes.html" class="hover:text-purple-500" aria-current="page">Course Notes</a></li>
+            <li><a href="5campus-news.html" class="hover:text-purple-500">Campus News</a></li>
+            <li><a href="6club-activities.html" class="hover:text-purple-500">Club Activities</a></li>
+            <li><a href="7student-marketplace.html" class="hover:text-purple-500">Student Marketplace</a></li>
+        </ul>
+    </nav>
+    
+    <main class="max-w-4xl mx-auto p-6">
+        <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-purple-700">Select Course</h2>
+            <ul class="mt-2 space-y-2">
+                <li><a href="notes/math.html" class="text-purple-600 hover:underline">Math</a></li>
+                <li><a href="notes/computer-science.html" class="text-purple-600 hover:underline">Computer Science</a></li>
+                <li><a href="notes/physics.html" class="text-purple-600 hover:underline">Physics</a></li>
+                <li><a href="notes/biology.html" class="text-purple-600 hover:underline">Biology</a></li>
+                <li><a href="notes/history.html" class="text-purple-600 hover:underline">History</a></li>
+                <li><a href="notes/chemistry.html" class="text-purple-600 hover:underline">Chemistry</a></li>
+            </ul>
+        </section>
+
+        <section class="bg-white p-6 mt-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold text-purple-700">Upload & Download Notes</h2>
+            <form action="upload.php" method="post" enctype="multipart/form-data" class="mt-4">
+                <label class="block text-gray-700">Download your notes file:</label>
+                <input type="file" name="fileUpload" class="mt-2 border p-2 rounded" required>
+                <button type="submit" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500">
+                    Upload
+                </button>
+            </form>
+
+            <form action="save_note.php" method="post" class="mt-6">
+                <label class="block text-gray-700">Write your notes:</label>
+                <textarea name="noteText" placeholder="Write your notes here..."
+                          class="w-full mt-2 p-2 border rounded" required></textarea>
+                
+                <label class="block mt-2 text-gray-700">Choose a storage location:</label>
+                <select name="storageLocation" class="mt-2 p-2 border rounded" required>
+                    <option value="storage-box">Storage file</option>
+                    <option value="notes/math.html">Math</option>
+                    <option value="notes/computer-science.html">Computer Science</option>
+                    <option value="notes/physics.html">Physics</option>
+                    <option value="notes/biology.html">Biology</option>
+                    <option value="notes/history.html">History</option>
+                    <option value="notes/chemistry.html">Chemistry</option>
+                </select>
+                <button type="submit" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-500">
+                    Save
+                </button>
+            </form>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-900 text-white text-center p-4 mt-8 shadow-lg">
+        &copy; 2025 Campus Hub - UOB University
+    </footer>
+    <script src="4course-notes.js"></script>
+</body>
+</html>
