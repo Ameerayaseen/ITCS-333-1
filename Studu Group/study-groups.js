@@ -78,7 +78,7 @@ function filterGroups() {
 searchInput.addEventListener('input', filterGroups);
 dateFilter.addEventListener('change', filterGroups);
 
-// Form submission
+
 const form = document.querySelector('#form form');
 form.addEventListener('submit', function (e) {
   e.preventDefault();
