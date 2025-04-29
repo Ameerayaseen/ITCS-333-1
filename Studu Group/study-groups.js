@@ -91,7 +91,6 @@ form.addEventListener('submit', function (e) {
     return;
   }
 
-  // Submit data to API (this is just a placeholder; update with your backend logic)
   fetch(API_URL, {
     method: 'POST',
     headers: {
