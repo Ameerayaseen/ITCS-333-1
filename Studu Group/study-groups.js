@@ -1,4 +1,4 @@
-const API_URL = 'https://mockapi.io/projects/6645c24cb8925626f8909a70/groups'; // Mock URL
+const API_URL = 'https://your-replit-url/study-groups.php';
 const groupsContainer = document.getElementById('groups-container');
 const loading = document.getElementById('loading');
 const error = document.getElementById('error');
