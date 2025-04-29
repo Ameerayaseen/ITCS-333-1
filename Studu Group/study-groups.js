@@ -1,4 +1,5 @@
-const API_URL = 'https://your-replit-url/api.php'; 
+const API_URL = 'https://your-replit-url/study-groups.php';
+
 const groupsContainer = document.getElementById('groups-container');
 const loading = document.getElementById('loading');
 const error = document.getElementById('error');
@@ -78,7 +79,6 @@ function filterGroups() {
 searchInput.addEventListener('input', filterGroups);
 dateFilter.addEventListener('change', filterGroups);
 
-// Form submission
 const form = document.querySelector('#form form');
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -91,8 +91,22 @@ form.addEventListener('submit', function (e) {
     return;
   }
 
-  alert('Study group created successfully!');
-  form.reset();
+  // Submit data to API (this is just a placeholder; update with your backend logic)
+  fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, time, description: desc }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert('Study group created successfully!');
+    form.reset();
+    fetchStudyGroups(); // Refresh the list of study groups
+  })
+  .catch(err => alert('Error creating study group: ' + err));
+
 });
 
 window.onload = fetchStudyGroups;
