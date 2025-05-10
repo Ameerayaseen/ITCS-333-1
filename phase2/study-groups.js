@@ -1,4 +1,4 @@
-const API_URL = 'https://your-replit-url/study-groups.php';
+const API_URL = 'https://your-replit-url/phase3/study-groups.php';
 
 const groupsContainer = document.getElementById('groups-container');
 const loading = document.getElementById('loading');
