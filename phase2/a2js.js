@@ -1,18 +1,14 @@
-// marketplace.js
-
-// Elements
 const itemListContainer = document.querySelector('.item-list');
 const searchInput = document.querySelector('input[placeholder="Search items..."]');
 const searchButton = document.querySelector('button');
 const postItemForm = document.getElementById('post-item-form');
 
-// State
+
 let allItems = [];
 let filteredItems = [];
 let currentPage = 1;
 const itemsPerPage = 3;
 
-// Fetch Data
 async function fetchMarketplaceItems() {
     showLoading();
     try {
@@ -29,22 +25,22 @@ async function fetchMarketplaceItems() {
     }
 }
 
-// Show Loading
+
 function showLoading() {
     itemListContainer.innerHTML = '<p class="text-center text-purple-700 font-semibold">Loading...</p>';
 }
 
-// Hide Loading
+
 function hideLoading() {
     itemListContainer.innerHTML = '';
 }
 
-// Show Error
+
 function showError(message) {
     itemListContainer.innerHTML = `<p class="text-center text-red-600 font-semibold">${message}</p>`;
 }
 
-// Render Items with Pagination
+
 function renderItems() {
     hideLoading();
     itemListContainer.innerHTML = '';
@@ -73,7 +69,7 @@ function renderItems() {
     renderPagination();
 }
 
-// Render Pagination Buttons
+
 function renderPagination() {
     const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
     const paginationContainer = document.createElement('div');
@@ -93,7 +89,7 @@ function renderPagination() {
     itemListContainer.appendChild(paginationContainer);
 }
 
-// Search Items
+
 function searchItems() {
     const query = searchInput.value.trim().toLowerCase();
     filteredItems = allItems.filter(item =>
@@ -103,7 +99,7 @@ function searchItems() {
     renderItems();
 }
 
-// Form Validation
+
 postItemForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -128,8 +124,7 @@ postItemForm.addEventListener('submit', function (event) {
     postItemForm.reset();
 });
 
-// Event Listeners
+
 searchButton.addEventListener('click', searchItems);
 
-// Initial Load
 fetchMarketplaceItems();
