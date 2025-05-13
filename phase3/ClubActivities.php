@@ -1,3 +1,4 @@
+
 <?php
 // Connection to database
 header("Content-Type: application/json"); 
