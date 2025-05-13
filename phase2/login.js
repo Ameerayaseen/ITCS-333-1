@@ -159,8 +159,33 @@ function setupLoginValidation() {
             password.classList.remove('border-red-500');
         }
 
-        if (valid) {
-            alert('Login validated! (but not submitted)');
+       if (valid) {
+    fetch("https://your-replit-username.repl.co/login.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email.value,
+            password: password.value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message); // Login successful
+            // You can save login state if needed
+            // localStorage.setItem("user", JSON.stringify(data));
+            // window.location.href = "dashboard.html"; // Optional redirect
+        } else {
+            alert(data.error || "Login failed.");
         }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Server error. Please try again later.");
+    });
+}
+
     });
 }
