@@ -159,5 +159,37 @@ document.addEventListener("DOMContentLoaded", () => {
       currentPage = 1;
       renderList();
     });
+    
+ document.getElementById("signup-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+
+    fetch("https://your-replit-username.repl.co/signup.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+            window.location.href = "login.html";
+        } else {
+            alert(data.error || "Signup failed.");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Server error. Try again later.");
+    });
+});
+
   });
   
