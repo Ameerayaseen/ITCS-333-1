@@ -72,7 +72,7 @@ switch ($method) {
             echo json_encode(['message' => 'News article deleted successfully']);
         } else {
             echo json_encode(['message' => 'Failed to delete news article']);
-        }
+        } 
         break;
 
     default:
@@ -80,6 +80,6 @@ switch ($method) {
         http_response_code(405); // Method Not Allowed
         echo json_encode(['message' => 'Method Not Allowed']);
         break;
-}
+} 
 ?>
 
