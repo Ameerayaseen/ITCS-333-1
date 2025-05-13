@@ -173,10 +173,7 @@ function setupLoginValidation() {
     .then(res => res.json())
     .then(data => {
         if (data.message) {
-            alert(data.message); // Login successful
-            // You can save login state if needed
-            // localStorage.setItem("user", JSON.stringify(data));
-            // window.location.href = "dashboard.html"; // Optional redirect
+            alert(data.message); 
         } else {
             alert(data.error || "Login failed.");
         }
