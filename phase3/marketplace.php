@@ -1,8 +1,5 @@
 <?php
-$host = 'localhost';
-$db = 'student_marketplace';
-$user = 'root';
-$pass = '';
+require_Once 'db.php'
 $charset = 'utf8mb/4';
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
