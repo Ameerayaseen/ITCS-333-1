@@ -1,5 +1,6 @@
 <?php
-
+//Connection to database
+header("Content-Type: application/json");
 // DB prarmeters
 $require_once 'db.php';  
 
