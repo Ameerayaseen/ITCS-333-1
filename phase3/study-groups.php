@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: GET, POST");
 
-require_once 'db.php'
+require_once 'db.php';
 
 $options = [
   PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -18,7 +18,6 @@ try {
   echo json_encode(['error' => 'Database connection failed']);
   exit;
 }
-
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
@@ -52,7 +51,7 @@ if ($requestMethod === 'GET') {
   echo json_encode($groups);
 
 } elseif ($requestMethod === 'POST') {
- 
+
   $data = json_decode(file_get_contents("php://input"), true);
 
   if (!isset($data['name'], $data['meeting_time'], $data['description'], $data['date'])) {
