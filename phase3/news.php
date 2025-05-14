@@ -1,10 +1,7 @@
 <?php
 
 // DB prarmeters
-$host = 'localhost';
-$dbname = 'news_db';
-$username = 'root';
-$password = '';
+$require_once 'db.php';  
 
 try {
     // Establishing a PDO connection to the MySQL database
