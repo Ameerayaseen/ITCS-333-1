@@ -2,11 +2,8 @@
 <?php
 // Connection to database
 header("Content-Type: application/json"); 
-$host = 'localhost';
-$db   = 'campus_hub';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+
+$require_once 'db.php';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
