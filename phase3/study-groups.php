@@ -4,11 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: GET, POST");
 
-$host = 'localhost';
-$db   = 'campus_hub';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+require_once 'db.php'
 
 $options = [
   PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
