@@ -3,10 +3,13 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 
-$host = "localhost";
-$dbname = "campus_hub";
-$username = "root";
-$password = "";
+require_once 'db.php';
+
+$options = [
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+];
+
 
 try {
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
