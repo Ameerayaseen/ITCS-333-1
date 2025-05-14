@@ -46,7 +46,7 @@ function renderGroups(groups) {
     div.className = 'bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition';
     div.innerHTML = `
       <h3 class="text-lg font-bold text-purple-700 mb-1">${group.name}</h3>
-      <p class="text-gray-600">📅 ${group.date} ⏰ ${group.time}</p>
+      <p class="text-gray-600">📅 ${group.date} ⏰ ${group.meeting_time}</p>
       <div class="mt-4 flex space-x-2">
         <button onclick="viewDetails('${group.id}')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">View</button>
         <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Join</button>
@@ -59,7 +59,7 @@ function renderGroups(groups) {
 function viewDetails(id) {
   const group = allGroups.find(g => g.id == id);
   if (group) {
-    alert(`Group: ${group.name}\nDate: ${group.date} ${group.time}\nDescription: ${group.description}`);
+    alert(`Group: ${group.name}\nDate: ${group.date} ${group.meeting_time}\nDescription: ${group.description}`);
   }
 }
 
@@ -84,9 +84,10 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
   const name = document.getElementById('groupName').value.trim();
   const time = document.getElementById('meetingTime').value.trim();
+  const date = document.getElementById('groupDate').value.trim();
   const desc = document.getElementById('description').value.trim();
 
-  if (!name || !time || !desc) {
+  if (!name || !time || !desc || !date) {
     alert('Please fill in all fields.');
     return;
   }
@@ -96,16 +97,15 @@ form.addEventListener('submit', function (e) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ name, time, description: desc }),
+    body: JSON.stringify({ name, meeting_time: time, description: desc, date }),
   })
   .then(response => response.json())
   .then(data => {
     alert('Study group created successfully!');
     form.reset();
-    fetchStudyGroups(); // Refresh the list of study groups
+    fetchStudyGroups();
   })
   .catch(err => alert('Error creating study group: ' + err));
-
 });
 
 window.onload = fetchStudyGroups;
