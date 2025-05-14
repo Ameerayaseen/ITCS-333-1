@@ -1,17 +1,17 @@
 <?php
 header("Content-Type: application/json");
-require_once 'db.php'; 
+require_once 'db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        if (isset($_GET['course_id'])) {
-            $course_id = intval($_GET['course_id']);
-            $stmt = $conn->prepare("SELECT * FROM course_notes WHERE course_id = ?");
-            $stmt->bind_param("i", $course_id);
+        if (isset($_GET['note_id'])) {
+            $note_id = intval($_GET['note_id']);
+            $stmt = $conn->prepare("SELECT * FROM Course_Notes WHERE note_id = ?");
+            $stmt->bind_param("i", $note_id);
         } else {
-            $stmt = $conn->prepare("SELECT * FROM course_notes");
+            $stmt = $conn->prepare("SELECT * FROM Course_Notes");
         }
 
         $stmt->execute();
@@ -22,13 +22,14 @@ switch ($method) {
 
     case 'POST':
         $data = json_decode(file_get_contents("php://input"), true);
-        $course_id = $data['course_id'] ?? null;
-        $title = $data['title'] ?? null;
-        $content = $data['content'] ?? null;
+        $course_name = $data['course_name'] ?? null;
+        $note_title = $data['note_title'] ?? null;
+        $note_content = $data['note_content'] ?? null;
+        $user_id = $data['user_id'] ?? null;
 
-        if ($course_id && $title && $content) {
-            $stmt = $conn->prepare("INSERT INTO course_notes (course_id, title, content) VALUES (?, ?, ?)");
-            $stmt->bind_param("iss", $course_id, $title, $content);
+        if ($course_name && $note_title && $note_content && $user_id) {
+            $stmt = $conn->prepare("INSERT INTO Course_Notes (course_name, note_title, note_content, user_id) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("sssi", $course_name, $note_title, $note_content, $user_id);
             if ($stmt->execute()) {
                 echo json_encode(["message" => "Note added successfully"]);
             } else {
@@ -43,13 +44,13 @@ switch ($method) {
 
     case 'PUT':
         $data = json_decode(file_get_contents("php://input"), true);
-        $note_id = $data['id'] ?? null;
-        $title = $data['title'] ?? null;
-        $content = $data['content'] ?? null;
+        $note_id = $data['note_id'] ?? null;
+        $note_title = $data['note_title'] ?? null;
+        $note_content = $data['note_content'] ?? null;
 
-        if ($note_id && $title && $content) {
-            $stmt = $conn->prepare("UPDATE course_notes SET title = ?, content = ? WHERE id = ?");
-            $stmt->bind_param("ssi", $title, $content, $note_id);
+        if ($note_id && $note_title && $note_content) {
+            $stmt = $conn->prepare("UPDATE Course_Notes SET note_title = ?, note_content = ? WHERE note_id = ?");
+            $stmt->bind_param("ssi", $note_title, $note_content, $note_id);
             if ($stmt->execute()) {
                 echo json_encode(["message" => "Note updated successfully"]);
             } else {
@@ -64,10 +65,10 @@ switch ($method) {
 
     case 'DELETE':
         parse_str(file_get_contents("php://input"), $data);
-        $note_id = $data['id'] ?? null;
+        $note_id = $data['note_id'] ?? null;
 
         if ($note_id) {
-            $stmt = $conn->prepare("DELETE FROM course_notes WHERE id = ?");
+            $stmt = $conn->prepare("DELETE FROM Course_Notes WHERE note_id = ?");
             $stmt->bind_param("i", $note_id);
             if ($stmt->execute()) {
                 echo json_encode(["message" => "Note deleted successfully"]);
