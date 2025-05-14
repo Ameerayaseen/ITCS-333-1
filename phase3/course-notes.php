@@ -1,92 +1,91 @@
 <?php
 header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-header("Access-Control-Allow-Headers: Content-Type");
-
-$host = 'localhost';
-$db   = 'campus_hub';
-$user = 'root';
-$pass = ''; // Default for XAMPP. Change if needed.
-$charset = 'utf8mb4';
-
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-];
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=$charset", $user, $pass, $options);
-} catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(["error" => "Database connection failed: " . $e->getMessage()]);
-    exit;
-}
+require_once 'db.php'; 
 
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        if (isset($_GET['id'])) {
-            $stmt = $pdo->prepare("SELECT * FROM course_notes WHERE id = ?");
-            $stmt->execute([$_GET['id']]);
-            echo json_encode($stmt->fetch());
+        if (isset($_GET['course_id'])) {
+            $course_id = intval($_GET['course_id']);
+            $stmt = $conn->prepare("SELECT * FROM course_notes WHERE course_id = ?");
+            $stmt->bind_param("i", $course_id);
         } else {
-            $stmt = $pdo->query("SELECT * FROM course_notes ORDER BY upload_date DESC");
-            echo json_encode($stmt->fetchAll());
+            $stmt = $conn->prepare("SELECT * FROM course_notes");
         }
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $notes = $result->fetch_all(MYSQLI_ASSOC);
+        echo json_encode($notes);
         break;
 
     case 'POST':
         $data = json_decode(file_get_contents("php://input"), true);
-        if (!isset($data['title'], $data['course_code'])) {
-            http_response_code(400);
-            echo json_encode(["error" => "Missing fields"]);
-            exit;
-        }
+        $course_id = $data['course_id'] ?? null;
+        $title = $data['title'] ?? null;
+        $content = $data['content'] ?? null;
 
-        $stmt = $pdo->prepare("INSERT INTO course_notes (title, course_code, description, uploaded_by) VALUES (?, ?, ?, ?)");
-        $stmt->execute([
-            $data['title'],
-            $data['course_code'],
-            $data['description'] ?? '',
-            $data['uploaded_by'] ?? 'Anonymous',
-        ]);
-        echo json_encode(["success" => true, "id" => $pdo->lastInsertId()]);
+        if ($course_id && $title && $content) {
+            $stmt = $conn->prepare("INSERT INTO course_notes (course_id, title, content) VALUES (?, ?, ?)");
+            $stmt->bind_param("iss", $course_id, $title, $content);
+            if ($stmt->execute()) {
+                echo json_encode(["message" => "Note added successfully"]);
+            } else {
+                http_response_code(500);
+                echo json_encode(["error" => "Failed to add note"]);
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Missing required fields"]);
+        }
         break;
 
     case 'PUT':
-        if (!isset($_GET['id'])) {
-            http_response_code(400);
-            echo json_encode(["error" => "Missing ID"]);
-            exit;
-        }
-
         $data = json_decode(file_get_contents("php://input"), true);
-        $stmt = $pdo->prepare("UPDATE course_notes SET title = ?, course_code = ?, description = ?, uploaded_by = ? WHERE id = ?");
-        $stmt->execute([
-            $data['title'],
-            $data['course_code'],
-            $data['description'],
-            $data['uploaded_by'],
-            $_GET['id']
-        ]);
-        echo json_encode(["success" => true]);
+        $note_id = $data['id'] ?? null;
+        $title = $data['title'] ?? null;
+        $content = $data['content'] ?? null;
+
+        if ($note_id && $title && $content) {
+            $stmt = $conn->prepare("UPDATE course_notes SET title = ?, content = ? WHERE id = ?");
+            $stmt->bind_param("ssi", $title, $content, $note_id);
+            if ($stmt->execute()) {
+                echo json_encode(["message" => "Note updated successfully"]);
+            } else {
+                http_response_code(500);
+                echo json_encode(["error" => "Failed to update note"]);
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Missing required fields"]);
+        }
         break;
 
     case 'DELETE':
-        if (!isset($_GET['id'])) {
-            http_response_code(400);
-            echo json_encode(["error" => "Missing ID"]);
-            exit;
-        }
+        parse_str(file_get_contents("php://input"), $data);
+        $note_id = $data['id'] ?? null;
 
-        $stmt = $pdo->prepare("DELETE FROM course_notes WHERE id = ?");
-        $stmt->execute([$_GET['id']]);
-        echo json_encode(["success" => true]);
+        if ($note_id) {
+            $stmt = $conn->prepare("DELETE FROM course_notes WHERE id = ?");
+            $stmt->bind_param("i", $note_id);
+            if ($stmt->execute()) {
+                echo json_encode(["message" => "Note deleted successfully"]);
+            } else {
+                http_response_code(500);
+                echo json_encode(["error" => "Failed to delete note"]);
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Missing note ID"]);
+        }
         break;
 
     default:
         http_response_code(405);
         echo json_encode(["error" => "Method not allowed"]);
+        break;
 }
+
+$conn->close();
+?>
